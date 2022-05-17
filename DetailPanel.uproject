@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{D41668FD-4DC0-CBAE-C1FC-48A37FB72516}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "DetailPanel",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		},
+		{
+			"Name": "DetailPanelEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
+}
