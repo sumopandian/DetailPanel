@@ -26,9 +26,12 @@ public:
 	{
 		check(InUObject);
 		Object = InUObject;
+		bDidWeSetFlag = false;
+		
 		Transaction = new FScopedTransaction(TEXT("MineSweeper"), TransactionName, Object);
 		//Sometimes this is not set based on scenarios. But we need this set to register transactions on the object.
 		//Eg: For objects in levels this flag is usually set and for BP it is not
+
 		if (!Object->HasAnyFlags(RF_Transactional))
 		{
 			bDidWeSetFlag = true;
