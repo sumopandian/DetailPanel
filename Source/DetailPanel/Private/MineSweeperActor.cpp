@@ -7,14 +7,15 @@ AMineSweeperActor::AMineSweeperActor(const FObjectInitializer& ObjectInitializer
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
+
+	//Since the board is random, Initialize will not be consistent in multiple calls.
+	//That has a tendency to cause issues with the copy properties functions for objects.
+	//Hence we try to initialize only for the CDO and copy for everything else.
 	if (HasAnyFlags(RF_ClassDefaultObject))
 	{
 		Initialize();
 		CheckAndGenerateBoard();
 	}
-	//Native properties are expected to be default initialized by the constructor
-	//But we only want to default intialize for the CDO/BP Archetypes and copy values from actual template archetypes for the rest similar to BP Classes.
-	//So we end up having to do the copy manually in our case.
 	else
 	{
 		if (AMineSweeperActor* Other = Cast<AMineSweeperActor>(ObjectInitializer.GetArchetype()))
